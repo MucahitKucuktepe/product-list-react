@@ -1,13 +1,22 @@
+import React from "react";
 import "./Products.scss";
 import { products } from "../../helper/data";
 import ProductCard from "./ProductCard";
-const ProductsList = ({ search }) => {
-  console.log(products);
+
+const ProductList = ({ search, click, refresh }) => {
   console.log(search);
-  const filteredProducts = products.filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase())
-  );
-  console.log(filteredProducts);
+  const filtered = (search, click) => {
+    const newArr =
+      click === "all"
+        ? products
+        : products.filter(
+            (item) =>
+              item.category.toLowerCase() === click &&
+              item.title.toLowerCase().includes(search.toLowerCase())
+          );
+          return newArr
+  };
+  const filteredProducts= refresh ? products.filter((item)=>item.title.toLowerCase().includes(search.toLowerCase())) : filtered(search,click)
   return (
     <div className="products-list">
       {filteredProducts.map((product) => (
@@ -17,4 +26,4 @@ const ProductsList = ({ search }) => {
   );
 };
 
-export default ProductsList;
+export default ProductList;

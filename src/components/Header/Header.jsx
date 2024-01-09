@@ -1,14 +1,10 @@
-import React from "react";
-import { categories } from "../../helper/data";
-import "./Header.scss";
+import React from 'react'
+import "./Header.scss"
 
 const Header = () => {
-  console.log(categories);
   return (
-    <div className="title">
-      <h1>Products List</h1>
-    </div>
-  );
-};
+    <div className='title'><h1>Product list</h1></div>
+  )
+}
 
-export default Header;
+export default Header
